@@ -9,7 +9,7 @@ Sub ProcessAndReportData()
     Application.ScreenUpdating = False
     Application.Calculation = xlCalculationManual
     
-    sourceSheets = Array("Scala1", "Unilift APG", "MMS", "Sololift components")
+    sourceSheets = Array("P1", "P2", "P3", "P4")
     Set reportWs = ThisWorkbook.Sheets("Report")
     Set dabPnDict = CreateObject("Scripting.Dictionary")
     
@@ -20,7 +20,7 @@ Sub ProcessAndReportData()
     
     For Each sheetName In sourceSheets
         Set ws = ThisWorkbook.Sheets(sheetName)
-        dabPnCol = Application.Match("*DAB p/n*", ws.Rows(1), 0)
+        dabPnCol = Application.Match("* p/n*", ws.Rows(1), 0)
         
         If Not IsError(dabPnCol) Then
             lastRow = ws.Cells(ws.Rows.Count, dabPnCol).End(xlUp).Row
